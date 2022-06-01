@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\PortafolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +18,17 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::view('portafolio','portafolio.index')->name('portafolio');
+
+Route::get('portafolio',[PortafolioController::class,'index'])->name('portafolio');
+
+Route::get('portafolio/create',[PortafolioController::class,'create'])->name('create');
+
+Route::post('portafolio',[PortafolioController::class,'store'])->name('store');
+
+Route::get('portafolio/{id}',[PortafolioController::class,'show'])->name('show');
+
+Route::get('portafolio/edit/{id}',[PortafolioController::class,'edit'])->name('edit');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
