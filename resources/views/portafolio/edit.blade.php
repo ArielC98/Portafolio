@@ -11,9 +11,10 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="#" method="POST">
+                    <form action="{{route('update',$portafolio)}}" method="POST">
                         @csrf
                         @method('PUT')
+                        
                         <div class="form-group row mb-3">
                             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Nombre</label>
                             <div class="col-sm-10">

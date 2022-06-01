@@ -20,7 +20,27 @@
     <h5 class="card-title">Imagen: {{ $portafolio->imagen }}</h5>
     <h5 class="card-title">Vídeo: {{ $portafolio->url }}</h5>
     <a href="{{route('edit',$portafolio)}}" class="btn btn-success btn-sm" >Actualizar</a>
-    <a href="" class="btn btn-danger btn-sm" >Eliminar</a>
+    
+    <form action="{{route('destroy',$portafolio)}}" method="POST" style="display: inline;" onsubmit="return confirmation()">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-danger btn-sm" >Eliminar</button>
+        <script type="text/javascript">
+            function confirmation()
+            {
+               if(confirm("¿Estás seguro de eliminar el registro?"))
+           {
+              return true;
+           }
+           else
+           {
+              return false;
+           }
+            }
+           </script>
+    </form>
+
+
     <hr>
 
     @endsection

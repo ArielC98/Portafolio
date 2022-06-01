@@ -86,10 +86,21 @@ class PortafolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Portafolio $portafolio)
     {
-        //
+        $portafolio->update([
+            'nombre'=> request('nombre'),
+            'descripcion'=> request('descripcion'),
+            'categoria'=> request('categoria'),
+            'imagen'=> request('imagen'),
+            'url'=> request('video')
+        ]);
+
+        return redirect()->route('show',$portafolio);
     }
+    
+    
+    
 
     /**
      * Remove the specified resource from storage.
@@ -97,8 +108,13 @@ class PortafolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+
+        public function destroy(Portafolio $portafolio)
+        {
+            $portafolio ->delete();
+            return redirect()->route('portafolio');
+        }
+    
+    
 }
+
